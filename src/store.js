@@ -1,16 +1,20 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import mutations from '@/store/mutations';
+import getters from '@/store/getters';
+import actions from '@/store/actions';
 
-Vue.use(Vuex)
+export default function createConfig () {
+  
+  const state = {
+    isLoading: true,
+    game: {
+      matches: [],
+    }
+  };
 
-export default new Vuex.Store({
-  state: {
-
-  },
-  mutations: {
-
-  },
-  actions: {
-
+  return {
+    state,
+    actions,
+    mutations,
+    getters
   }
-})
+}
