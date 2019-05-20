@@ -1,37 +1,26 @@
 <template>
   <div class="game">
-    <h1> World Cup Game </h1>
+    <h1> VueJS + Vuex </h1>
   </div>
 </template>
 
 <script>
 
-import { RepositoryFactory } from "./../repositories/RepositoryFactory";
-
-const MatchesRepository = RepositoryFactory.get('matches');
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
   name: "Game",
   props: {},
-  data () {
-    return {
-      isLoading: false,
-      matches: [],
-    }
+  computed: {
+    ...mapGetters(['loading']),
   },
   created() {
     this.fetchMatches();
   },
   methods: {
-    async fetchMatches() {
-      this.isLoading = true;
-      const { data } = await MatchesRepository.get();
-      this.isLoading = false;
-      this.matches = data;
-    }
-  }
+    ...mapActions(['fetchMatches']),
+  },
 }
-
 
 </script>
 
