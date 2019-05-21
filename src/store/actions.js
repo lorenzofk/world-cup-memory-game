@@ -7,5 +7,8 @@ export default {
       const { data } = await MatchesRepository.get();
       commit("setMatches", data);
       commit("changeLoadingState");
-  }
+  },
+  changeStage({ commit }) {
+    commit("changeStage");
+  },
 }

@@ -1,8 +1,12 @@
 export default {
-  matches: (state) => {
-    return state.game.matches;
+  currentStage: (store) => {
+    let stages = store.game.stages;
+    return stages[store.game.currentStageIndex].name;
   },
-  loading: (state) => {
-    return state.isLoading;
+  matches: (store) => {
+    return store.game.matches;
+  },
+  loading: (store) => {
+    return store.isLoading;
   }
 }
