@@ -15,4 +15,13 @@ export default {
     commit("changeCurrentMatches");
     commit("changeLoadingState");
   },
+  incrementHits({ commit }) {
+    commit("incrementHits");
+  },
+  incrementMisses({ commit }) {
+    commit("incrementMisses");
+  },
+  newAttempt({ commit }, match) {
+    commit("newAttempt", match);
+  },
 }
