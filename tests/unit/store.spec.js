@@ -56,4 +56,20 @@ describe('Store', () => {
 
   });
 
+
+  it('should advance stage if all matches are been selected', async () => {
+
+    let currentMatches = store.getters.currentMatches;
+    
+    expect(store.getters.canAdvanceStage).to.equal(false);
+
+    for (let index in currentMatches) {
+      let match = currentMatches[index];
+      await store.dispatch('newAttempt', match);
+    }
+
+    expect(store.getters.canAdvanceStage).to.equal(true);
+    
+  });
+
 });
