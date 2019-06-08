@@ -14,15 +14,24 @@ export default {
 
   },
   changeCurrentMatches(state) {
-      let currentStage = state.game.stages[state.game.currentStageIndex];
+    let currentStage = state.game.stages[state.game.currentStageIndex];
 
-      let compare = stageName => (element) => {
-          return element.stage_name.indexOf(stageName) > -1;
-      };
+    let compare = stageName => (element) => {
+        return element.stage_name.indexOf(stageName) > -1;
+    };
 
-      state.game.currentMatches = state.game.matches.filter(compare(currentStage.name));
+    state.game.currentMatches = state.game.matches.filter(compare(currentStage.name));
+  },
+  newAttempt(state, match) {
+    state.game.stages[state.game.currentStageIndex].selectedMatches.push(match);
   },
   setMatches: (state, matches) => {
     state.game.matches = matches;
-  }
+  },
+  incrementHits: (state) => {
+      state.game.hits++;
+  },
+  incrementMisses: (state) => {
+    state.game.misses++;
+  },
 }

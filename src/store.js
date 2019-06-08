@@ -11,23 +11,29 @@ export default function createConfig () {
         {
           name: 'Round of 16',
           numberOfMatches: 8,
+          selectedMatches: [],
         },
         {
           name: 'Quarter-finals',
           numberOfMatches: 4,
+          selectedMatches: [],
         },
         {
           name: 'Semi-finals',
           numberOfMatches: 2,
+          selectedMatches: [],
         },
         {
           name: 'Final',
           numberOfMatches: 1,
+          selectedMatches: [],
         }
       ],
       currentStageIndex: 0,
       matches: [],
       currentMatches: [],
+      misses: 0,
+      hits: 0,
     }
   };
 

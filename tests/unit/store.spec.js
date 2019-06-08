@@ -43,4 +43,33 @@ describe('Store', () => {
 
   });
 
+  it('should increments hits/misses', async () => {
+
+    let currentHits = store.getters.hits;
+    let currentMisses = store.getters.misses;
+    
+    await store.dispatch('incrementHits');
+    expect(store.getters.hits).to.equal(currentHits + 1);
+
+    await store.dispatch('incrementMisses');
+    expect(store.getters.misses).to.equal(currentMisses + 1);
+
+  });
+
+
+  it('should advance stage if all matches are been selected', async () => {
+
+    let currentMatches = store.getters.currentMatches;
+    
+    expect(store.getters.canAdvanceStage).to.equal(false);
+
+    for (let index in currentMatches) {
+      let match = currentMatches[index];
+      await store.dispatch('newAttempt', match);
+    }
+
+    expect(store.getters.canAdvanceStage).to.equal(true);
+    
+  });
+
 });
