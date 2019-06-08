@@ -9,7 +9,7 @@
       <h3> {{ currentStage.name }} </h3>
       <MatchesList />
       <hr>
-      <button @click="changeStage" class="btn btn-sm btn-primary"> Next Stage </button>
+      <button @click="advanceStage" class="btn btn-sm btn-primary"> Next Stage </button>
     </div>
     
   </div>
@@ -27,7 +27,8 @@ export default {
     ...mapGetters([
       'loading', 
       'matches', 
-      'currentStage'
+      'currentStage',
+      'canAdvanceStage'
     ]),
   },
   created() {
@@ -40,6 +41,19 @@ export default {
       'fetchMatches', 
       'changeStage'
     ]),
+    advanceStage() {
+      
+      // If all matches are been selected
+      // the player can advance to next stage
+
+      if (! this.canAdvanceStage) {
+        alert('You should selected at least one winner for each match.');
+        return false;
+      }
+
+      this.changeStage();
+
+    },
   },
 }
 
