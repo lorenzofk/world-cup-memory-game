@@ -43,4 +43,17 @@ describe('Store', () => {
 
   });
 
+  it('should increments hits/misses', async () => {
+
+    let currentHits = store.getters.hits;
+    let currentMisses = store.getters.misses;
+    
+    await store.dispatch('incrementHits');
+    expect(store.getters.hits).to.equal(currentHits + 1);
+
+    await store.dispatch('incrementMisses');
+    expect(store.getters.misses).to.equal(currentMisses + 1);
+
+  });
+
 });
