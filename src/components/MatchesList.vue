@@ -1,7 +1,7 @@
 <template>
   <div class="matches-list">
-
-    <div v-for="(match, index) in matches" :key="index">
+    <div v-for="(match, index) in currentMatches" :key="index">
+        <hr>
         <div class="row">
           <div class="col-sm-5">
             <a> 
@@ -24,13 +24,13 @@
 
 <script>
 
-import { mapActions, mapGetters } from 'vuex';
+import { mapGetters } from 'vuex';
 
 export default {
   name: "MatchesList",
   props: {},
   computed: {
-    ...mapGetters(['matches']),
+    ...mapGetters(['matches', 'currentMatches']),
   },
   methods: {
   },

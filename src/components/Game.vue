@@ -6,10 +6,10 @@
     </div>
     
     <div v-else class="container">
-      <h3> {{ currentStage }} </h3>
-      <hr>
+      <h3> {{ currentStage.name }} </h3>
       <MatchesList />
-      <button @click="changeStage" class="btn btn-primary"> Next Stage </button>
+      <hr>
+      <button @click="changeStage" class="btn btn-sm btn-primary"> Next Stage </button>
     </div>
     
   </div>
@@ -31,11 +31,9 @@ export default {
     ]),
   },
   created() {
-
     if (! this.matches.length) {
       this.fetchMatches();
     }
-
   },
   methods: {
     ...mapActions([
