@@ -1,10 +1,11 @@
 import { expect } from 'chai';
 import { RepositoryFactory } from "@/repositories/RepositoryFactory";
 
+const Constants = require('./constants');
+
 describe('Service API', () => {
   
   const MatchesRepository = RepositoryFactory.get('matches');
-  const TOTAL_OF_MATCHES = 64;
 
   it('should return all "matches" from third API', async () => {
     
@@ -12,7 +13,7 @@ describe('Service API', () => {
 
     expect(response.status).to.equal(200);
     expect(response.data).to.be.a('array');
-    expect(response.data).to.have.lengthOf(TOTAL_OF_MATCHES);
+    expect(response.data).to.have.lengthOf(Constants.TOTAL_OF_MATCHES);
 
   });
 

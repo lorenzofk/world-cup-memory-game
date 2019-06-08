@@ -6,7 +6,7 @@
     </div>
     
     <div v-else class="container">
-      <h3> {{ currentStage }} </h3>
+      <h3> {{ currentStage.name }} </h3>
       <hr>
       <MatchesList />
       <button @click="changeStage" class="btn btn-primary"> Next Stage </button>

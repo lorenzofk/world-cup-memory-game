@@ -13,11 +13,11 @@ export default function createConfig () {
           numberOfMatches: 8,
         },
         {
-          name: 'Quarter-Finals',
+          name: 'Quarter-finals',
           numberOfMatches: 4,
         },
         {
-          name: 'Semi-Finals',
+          name: 'Semi-finals',
           numberOfMatches: 2,
         },
         {
@@ -27,6 +27,7 @@ export default function createConfig () {
       ],
       currentStageIndex: 0,
       matches: [],
+      currentMatches: [],
     }
   };
 
