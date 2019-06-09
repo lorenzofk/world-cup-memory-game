@@ -22,16 +22,21 @@ export default {
 
     state.game.currentMatches = state.game.matches.filter(compare(currentStage.name));
   },
-  newAttempt(state, match) {
-    state.game.stages[state.game.currentStageIndex].selectedMatches.push(match);
+  newAttempt(state, payload) {
+    payload.match.correctAnswer = payload.correctAnswer;
+
+    state.game.stages[state.game.currentStageIndex].selectedMatches.push(payload.match);
   },
   setMatches: (state, matches) => {
     state.game.matches = matches;
   },
   incrementHits: (state) => {
-      state.game.hits++;
+    state.game.hits++;
   },
   incrementMisses: (state) => {
     state.game.misses++;
   },
+  resetState (state, newState) {
+    Object.assign(state, newState);
+  }
 }

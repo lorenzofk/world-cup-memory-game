@@ -29,11 +29,11 @@ export default function createConfig () {
           selectedMatches: [],
         }
       ],
-      currentStageIndex: 0,
       matches: [],
       currentMatches: [],
-      misses: 0,
       hits: 0,
+      misses: 0,
+      currentStageIndex: 0,
     }
   };
 
