@@ -1,3 +1,4 @@
+import createConfig from '@/store';
 import { RepositoryFactory } from "@/repositories/RepositoryFactory";
 
 const MatchesRepository = RepositoryFactory.get('matches');
@@ -21,7 +22,17 @@ export default {
   incrementMisses({ commit }) {
     commit("incrementMisses");
   },
-  newAttempt({ commit }, match) {
-    commit("newAttempt", match);
+  newAttempt({ commit }, payload) {
+    commit("newAttempt", payload);
+  },
+  async restartGame({ commit }) {
+    // Reset the state
+    commit("resetState", createConfig().state);
+    
+    // Fetch the data again
+    const { data } = await MatchesRepository.get();
+    commit("setMatches", data);
+    commit("changeLoadingState");
+    commit("changeCurrentMatches");
   },
 }
