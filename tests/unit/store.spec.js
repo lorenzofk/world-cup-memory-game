@@ -8,7 +8,7 @@ const Constants = require('./constants');
 const localVue = createLocalVue();
 localVue.use(Vuex);
 
-describe('Store', () => {
+describe('Store/Game Logic', () => {
 
   const storeConfig = createConfig();
   const store = new Vuex.Store(storeConfig);
@@ -57,19 +57,48 @@ describe('Store', () => {
   });
 
 
-  it('should advance stage if all matches are been selected', async () => {
+  it('should allows the user to advance for next stage if all matches are been selected', async () => {
 
     let currentMatches = store.getters.currentMatches;
     
     expect(store.getters.canAdvanceStage).to.equal(false);
 
     for (let index in currentMatches) {
-      let match = currentMatches[index];
-      await store.dispatch('newAttempt', match);
+      await store.dispatch('newAttempt', {
+        correctAnswer: true,
+        match: currentMatches[index]
+      });
     }
 
     expect(store.getters.canAdvanceStage).to.equal(true);
     
+  });
+
+  it('should allows the user to restart the game', async () => {
+
+    // Initialize the game
+    await store.dispatch('restartGame');
+    expect(store.getters.currentStage.numberOfMatches).to.equal(8);
+
+    // Advance to next stage
+    await store.dispatch('changeStage');
+    expect(store.getters.currentStage.numberOfMatches).to.equal(4);
+
+    // Advance to next stage
+    await store.dispatch('changeStage');
+    expect(store.getters.currentStage.numberOfMatches).to.equal(2);
+    
+    // Advance to next stage
+    await store.dispatch('changeStage');
+    expect(store.getters.currentStage.numberOfMatches).to.equal(1);
+    
+    // Restart the game
+    await store.dispatch('restartGame');
+    expect(store.getters.currentStage.numberOfMatches).to.equal(8);
+
+    // The scores should be zero
+    expect(store.getters.hits).to.equal(0);
+    expect(store.getters.misses).to.equal(0);    
   });
 
 });
