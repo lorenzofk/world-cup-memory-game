@@ -18,6 +18,10 @@ export default {
   misses: (store) => {
     return store.game.misses;
   },
+  isFinalMatch: (store) => {
+    let stages = store.game.stages;
+    return stages[store.game.currentStageIndex].numberOfMatches === 1;
+  },
   canAdvanceStage: (store) => {
     let stages = store.game.stages;
     let currentStageTotalOfMatches = stages[store.game.currentStageIndex].numberOfMatches;
