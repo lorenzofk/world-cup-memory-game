@@ -84,11 +84,9 @@ describe('Store/Game Logic', () => {
     await store.dispatch('changeStage');
     expect(store.getters.currentStage.numberOfMatches).to.equal(4);
 
-    // Advance to next stage
     await store.dispatch('changeStage');
     expect(store.getters.currentStage.numberOfMatches).to.equal(2);
     
-    // Advance to next stage
     await store.dispatch('changeStage');
     expect(store.getters.currentStage.numberOfMatches).to.equal(1);
     
