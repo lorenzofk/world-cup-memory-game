@@ -9,6 +9,7 @@
 
       <div class="gameStatus">
         <span style="float:left"> {{ currentStage.name }} </span>
+        <small class="tip"> Who won each match? Click on the winner ;) </small>
         <span style="float:right"> Hits: {{ hits }} | Misses: {{ misses }} </span>
         <div style="clear: both;"></div>
       </div>
@@ -114,6 +115,16 @@ export default {
 
 .button {
   padding-bottom: 10px;
+}
+
+.tip {
+  color: gold;
+}
+
+@media only screen and (max-width: 768px) {
+  .tip { 
+    display: none !important; 
+  } 
 }
 
 </style>
