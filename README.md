@@ -4,9 +4,9 @@
 
 This project consists in a basic memory game developed with VueJS.
 
-The problem to be solved was to consumes an external API and use this data in a interesting way.
+The problem to be solved was to consume an external API and use this data in a interesting way.
 
-As a soccer lover, I decided to consumes a World Cup 2018 API and develop a basic game testing your memory.
+As a soccer lover, I decided to consume a World Cup 2018 API and develop a basic game testing your memory.
 
 Do you have a good memory? Do you remember who won each game in the last World Cup? 
 
