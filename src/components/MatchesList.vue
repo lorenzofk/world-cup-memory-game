@@ -10,7 +10,7 @@
             </a>
           </div>
           <div class="col-sm-1"> 
-            <strong> X </strong>
+            <strong> <font-awesome-icon icon="times" size="lg" /> </strong>
           </div>
           <div class="col-sm-5"> 
             <a @click="selectResult(match, match.away_team.code)"> 
